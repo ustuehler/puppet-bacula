@@ -1,0 +1,12 @@
+
+# <%= comment %>
+Job {
+  Name = "<%= name %>"
+  JobDefs = "DefaultJob"
+  Client = <%= client %>
+  FileSet = "<%= fileset %>"
+<% if accurate -%>
+  Accurate = yes
+<% end -%>
+<%= content -%>
+}

@@ -1,9 +1,9 @@
-# Manage the File Daemon service (bacula-fd).
-class bacula::client::service inherits bacula::client::config
+# Manage the Director service (bacula-dir).
+class bacula::director::service inherits bacula::director::config
 {
 	case $operatingsystem {
 	    Debian: {
-		service { bacula-fd:
+		service { bacula-director:
 			enable => true,
 			ensure => running,
 			hasstatus => true,
@@ -16,3 +16,4 @@ class bacula::client::service inherits bacula::client::config
 	    }
 	}
 }
+

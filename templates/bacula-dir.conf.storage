@@ -1,0 +1,10 @@
+
+# Definietion of a File Storage service
+Storage {
+  Name = <%= name %>
+  Address = <%= address %>
+  SD Port = 9103
+  Password = "<%= password %>"        # password for StorageDaemon
+  Device = FileStorage
+  Media Type = File
+}

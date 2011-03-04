@@ -1,6 +1,9 @@
-# Install the Bacula storage daemon (bacula-sd).
+# FIXME: Explicit import because autoloading doesn't seem to work when
+# exported resources are created with Bacula::Storage::Director<<||>>.
+import 'bacula/storage/director.pp'
+
+# Manage the Bacula storage daemon (bacula-sd).
 class bacula::storage
 {
-	$class = inline_template("${name}::<%= operatingsystem.downcase %>")
-	require $class
+	require install, config, service
 }

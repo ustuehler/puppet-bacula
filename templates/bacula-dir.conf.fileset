@@ -1,0 +1,6 @@
+
+# <%= comment %>
+FileSet {
+  Name = "<%= name %>"
+<%= content -%>
+}
