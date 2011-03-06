@@ -2,7 +2,12 @@
 # <%= comment %>
 Job {
   Name = "<%= name %>"
-  JobDefs = "DefaultJob"
+<% if jobdefs != '' -%>
+  JobDefs = "<%= jobdefs %>"
+<% end -%>
+<% if scope.lookupvar('type') != '' -%>
+  Type = <%= scope.lookupvar('type') %>
+<% end -%>
   Client = <%= client %>
   FileSet = "<%= fileset %>"
 <% if accurate -%>

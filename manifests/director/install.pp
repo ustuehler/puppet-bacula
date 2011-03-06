@@ -7,6 +7,7 @@ class bacula::director::install
 			ensure => installed
 		}
 
+		$group = "bacula"
 		$config_dir = "/etc/bacula"
 		$work_dir = "/var/lib/bacula"
 		$pid_dir = "/var/run/bacula"
@@ -16,6 +17,9 @@ class bacula::director::install
 	    default: {
 		$class = inline_template("${name}::<%= operatingsystem.downcase %>")
 		require $class
+
+		$group = inline_template("<%=scope.lookupvar '${class}::group'%>")
+		if !$group { fail("missing \$${class}::group") }
 
 		$config_dir = inline_template("<%=scope.lookupvar '${class}::config_dir'%>")
 		if !$config_dir { fail("missing \$${class}::config_dir") }

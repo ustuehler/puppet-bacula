@@ -6,7 +6,7 @@ class bacula::director::config($password)
 
 	concat { $config_file:
 		owner => root,
-		group => 0,
+		group => $group,
 		mode => 440,
 		require => Class['bacula::director::install']
 	}
