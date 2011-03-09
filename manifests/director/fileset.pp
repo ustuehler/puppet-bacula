@@ -1,5 +1,5 @@
 # Define a FileSet resource.
-define bacula::director::fileset($comment, $content)
+define bacula::director::fileset($content, $comment = '')
 {
 	include bacula::director::config
 

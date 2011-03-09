@@ -10,6 +10,7 @@ class bacula::client::install
 		$config_dir = "/etc/bacula"
 		$work_dir = "/var/lib/bacula"
 		$pid_dir = "/var/run/bacula"
+		$plugin_dir = "/usr/lib/bacula"
 	    }
 
 	    default: {
@@ -24,6 +25,9 @@ class bacula::client::install
 
 		$pid_dir = inline_template("<%=scope.lookupvar '${class}::pid_dir'%>")
 		if !$pid_dir { fail("missing \$${class}::pid_dir") }
+
+		$plugin_dir = inline_template("<%=scope.lookupvar '${class}::plugin_dir'%>")
+		if !$plugin_dir { fail("missing \$${class}::plugin_dir") }
 	    }
 	}
 }

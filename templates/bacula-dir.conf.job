@@ -1,5 +1,7 @@
 
+<% if comment != '' -%>
 # <%= comment %>
+<% end -%>
 Job {
   Name = "<%= name %>"
 <% if jobdefs != '' -%>
@@ -8,10 +10,16 @@ Job {
 <% if scope.lookupvar('type') != '' -%>
   Type = <%= scope.lookupvar('type') %>
 <% end -%>
+<% if level != '' -%>
+  Level = <%= level %>
+<% end -%>
   Client = <%= client %>
   FileSet = "<%= fileset %>"
 <% if accurate -%>
   Accurate = yes
+<% end -%>
+<% if messages != '' -%>
+  Messages = <%= messages %>
 <% end -%>
 <%= content -%>
 }

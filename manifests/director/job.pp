@@ -1,6 +1,6 @@
 # Define a backup or restore Job.
 define bacula::director::job($comment, $client, $fileset, $accurate = false,
-    $jobdefs = "", $type = "", $content = "")
+    $jobdefs = "", $type = "", $messages = "", $level = "", $content = "")
 {
 	include bacula::director::config
 
@@ -9,4 +9,3 @@ define bacula::director::job($comment, $client, $fileset, $accurate = false,
 		content => template("bacula/bacula-dir.conf.job")
 	}
 }
-
