@@ -11,6 +11,18 @@ class bacula::client::service inherits bacula::client::config
 		}
 	    }
 
+	    OpenBSD: {
+		service { bacula-fd:
+			provider => base,
+			ensure => running,
+			start => "/etc/rc.d/bacula_fd start",
+			status => "/etc/rc.d/bacula_fd check",
+			stop => "/etc/rc.d/bacula_fd stop",
+			restart => "/etc/rc.d/bacula_fd restart",
+			subscribe => Concat[$config_file]
+		}
+	    }
+
 	    default: {
 		fail("$operatingsystem is currently unsupported")
 	    }

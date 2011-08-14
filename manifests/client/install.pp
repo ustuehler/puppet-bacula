@@ -4,13 +4,24 @@ class bacula::client::install
 	case $operatingsystem {
 	    Debian: {
 		package { bacula-client:
-			ensure => installed
+			ensure => present
 		}
 
 		$config_dir = "/etc/bacula"
 		$work_dir = "/var/lib/bacula"
 		$pid_dir = "/var/run/bacula"
 		$plugin_dir = "/usr/lib/bacula"
+	    }
+
+	    OpenBSD: {
+		package { bacula-client:
+			ensure => present
+		}
+
+		$config_dir = "/etc/bacula"
+		$work_dir = "/var/bacula"
+		$pid_dir = "/var/run"
+		$plugin_dir = "/usr/local/lib"
 	    }
 
 	    default: {
