@@ -7,7 +7,7 @@ class bacula::director::service inherits bacula::director::config
 			enable => true,
 			ensure => running,
 			hasstatus => true,
-			subscribe => Concat[$config_file]
+			subscribe => File_concat[$config_file]
 		}
 	    }
 

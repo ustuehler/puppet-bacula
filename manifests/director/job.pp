@@ -4,8 +4,8 @@ define bacula::director::job($comment, $client, $fileset, $accurate = false,
 {
 	include bacula::director::config
 
-	concat::fragment { "bacula::director::job($name)":
-		target => $bacula::director::config::config_file,
+	file_fragment { "bacula::director::job($name)":
+		path => $bacula::director::config::config_file,
 		content => template("bacula/bacula-dir.conf.job")
 	}
 }

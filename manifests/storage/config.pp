@@ -3,15 +3,15 @@ class bacula::storage::config inherits bacula::storage::install
 {
 	$config_file = "$config_dir/bacula-sd.conf"
 
-	concat { $config_file:
+	file_concat { $config_file:
 		owner => root,
 		group => 0,
 		mode => 440,
 		require => Class['bacula::storage::install']
 	}
 
-	concat::fragment { $name:
-		target => $config_file,
+	file_fragment { $name:
+		path => $config_file,
 		content => template("bacula/bacula-sd.conf"),
 		order => 00
 	}

@@ -3,8 +3,8 @@ define bacula::director::client($address, $password)
 {
 	include bacula::director::config
 
-	concat::fragment { "bacula::director::client($name)":
-		target => $bacula::director::config::config_file,
+	file_fragment { "bacula::director::client($name)":
+		path => $bacula::director::config::config_file,
 		content => template("bacula/bacula-dir.conf.client")
 	}
 }

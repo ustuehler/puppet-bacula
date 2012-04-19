@@ -7,7 +7,7 @@ class bacula::client::service inherits bacula::client::config
 			enable => true,
 			ensure => running,
 			hasstatus => true,
-			subscribe => Concat[$config_file]
+			subscribe => File_concat[$config_file]
 		}
 	    }
 
@@ -19,7 +19,7 @@ class bacula::client::service inherits bacula::client::config
 			status => "/etc/rc.d/bacula_fd check",
 			stop => "/etc/rc.d/bacula_fd stop",
 			restart => "/etc/rc.d/bacula_fd restart",
-			subscribe => Concat[$config_file]
+			subscribe => File_concat[$config_file]
 		}
 	    }
 

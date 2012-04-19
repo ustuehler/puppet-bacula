@@ -7,7 +7,7 @@ class bacula::storage::service inherits bacula::storage::config
 			enable => true,
 			ensure => running,
 			hasstatus => true,
-			subscribe => Concat[$config_file]
+			subscribe => File_concat[$config_file]
 		}
 	    }
 
