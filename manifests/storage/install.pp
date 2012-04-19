@@ -11,6 +11,7 @@ class bacula::storage::install
 		$work_dir = "/var/lib/bacula"
 		$pid_dir = "/var/run/bacula"
 		$user = bacula
+                $depends = Package['bacula-sd']
 	    }
 
 	    default: {
@@ -28,6 +29,8 @@ class bacula::storage::install
 
 		$user = inline_template("<%=scope.lookupvar '${class}::user'%>")
 		if !$user { fail("missing \$${class}::user") }
+
+                $depends = $class
 	    }
 	}
 
@@ -35,6 +38,7 @@ class bacula::storage::install
 		ensure => directory,
 		owner => $user,
 		group => 0,
-		mode => 700
+		mode => 700,
+                require => $depends
 	}
 }

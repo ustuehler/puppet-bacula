@@ -5,6 +5,6 @@ define bacula::client::director($password, $monitor = false)
 
 	file_fragment { "bacula::client::director($name)":
 		path => $bacula::client::config::config_file,
-		content => template("bacula/bacula-fd.conf.director")
+		content => template("bacula/bacula-fd.conf.director"),
 	}
 }
